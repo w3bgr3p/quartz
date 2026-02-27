@@ -1,5 +1,3 @@
-
-
 up:: [[_ Публикация Obsidian через Quartz]]
 prev:: [[Деплой на GitHub Pages]]
 

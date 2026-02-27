@@ -1,5 +1,3 @@
-
-
 up:: [[_ Публикация Obsidian через Quartz]]
 prev:: [[Требования и установка]]
 next:: [[Локальный запуск]]
@@ -22,7 +20,7 @@ quartz/
 
 ## Подключение Obsidian Vault
 
-### Вариант A — Скопировать заметки
+### Вариант А — Скопировать заметки
 
 ```bash
 cp -r /path/to/your/vault/* quartz/content/
@@ -30,20 +28,26 @@ cp -r /path/to/your/vault/* quartz/content/
 
 Простой способ, но нужно копировать при каждом обновлении.
 
-### Вариант B — Символическая ссылка (рекомендуется)
+### Вариант Б — Символическая ссылка
 
 ```bash
 # macOS / Linux
 ln -s /path/to/your/vault quartz/content
 
-# Windows (от имени администратора)
+# Windows (от имени администратора cmd)
 mklink /D "C:\quartz\content" "C:\path\to\vault"
-mklink /D "W:\code_hard\js\quartz\content" "S:\theBrain\w3bgr3p\KnowledgeHub"
 ```
 
-Vault и сайт синхронизированы автоматически.
+> [!WARNING]
+> **Windows + симлинк** — Git не следует за симлинками на Windows. Содержимое vault не попадёт в репо. Используй [[Синхронизация vault с сайтом|скрипт синхронизации]] вместо симлинка.
 
-### Вариант C — Разместить vault внутри quartz/content/
+> [!WARNING]
+> **Если vault сам является git-репо** — при `git add content/` получишь ошибку `adding embedded git repository`. Решение: удалить `.git` из скопированных файлов:
+> ```bash
+> rm -rf content/.git
+> ```
+
+### Вариант В — Разместить vault внутри quartz/content/
 
 Переместить сам vault в папку `content/` и открывать его оттуда в Obsidian.
 
@@ -102,7 +106,7 @@ const config: QuartzConfig = {
 ```
 
 > [!WARNING]
-> Поле `baseUrl` критично для корректной работы ссылок на GitHub Pages. Указывать без `https://`.
+> Поле `baseUrl` — строгий формат: **без `https://`**, **без `/` в конце**, только `username.github.io/repo-name`. Иначе сайт отдаёт RSS вместо HTML.
 
 ## Исключение приватных заметок
 

@@ -13,6 +13,20 @@ next:: [[Настройка wikilinks и графа]]
 3. Видимость → **Public** (обязательно для бесплатного GitHub Pages)
 4. Нажать **Create repository**
 
+## Обязательно — создать content/index.md
+
+Без этого файла сайт отдаёт RSS вместо главной страницы.
+
+```markdown
+---
+title: Главная
+---
+
+# 🌿 Название сайта
+
+Добро пожаловать.
+```
+
 ## Подключение к GitHub
 
 ```bash
@@ -20,6 +34,12 @@ next:: [[Настройка wikilinks и графа]]
 git init
 git remote add origin https://github.com/USERNAME/REPO-NAME.git
 ```
+
+> [!WARNING]
+> Если `git clone` уже был сделан — remote `origin` уже существует и указывает на репо автора Quartz. Заменить:
+> ```bash
+> git remote set-url origin https://github.com/USERNAME/REPO-NAME.git
+> ```
 
 ## Настройка GitHub Actions
 
@@ -117,5 +137,5 @@ https://USERNAME.github.io/REPO-NAME/
 
 ---
 
-prev:: [[Локальный запуск]]
-next:: [[Настройка wikilinks и графа]]
+prev:: [[03 Локальный запуск]]
+next:: [[05 Настройка wikilinks и графа]]
